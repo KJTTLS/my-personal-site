@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3c3b3f, #605c3c);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .contact {
+            margin: 20px 0;
+        }
+        .message-board {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .message-board form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .message-board input, .message-board textarea {
+            width: 80%;
+            margin: 5px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .message-board button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #ff6600;
+            color: white;
+            cursor: pointer;
+        }
+        .message-board button:hover {
+            background: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>欢迎来到我的个人网页</h1>
+    <p>这里是我的个人简介。</p>
+
+    <div class="contact">
+        <h2>联系信息</h2>
+        <p>Email: example@example.com</p>
+        <p>电话: 123-456-7890</p>
+    </div>
+
+    <div class="message-board">
+        <h2>留言板</h2>
+        <form id="messageForm">
+            <input type="text" placeholder="您的姓名" required>
+            <textarea placeholder="留言内容" required></textarea>
+            <button type="submit">发送留言</button>
+        </form>
+        <div id="messages" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this[0].value;
+            const message = this[1].value;
+
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<p><strong>${name}:</strong> ${message}</p>`;
+
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
